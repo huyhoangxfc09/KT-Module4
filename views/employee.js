@@ -1,5 +1,6 @@
     function home() {
       displayEmployee()
+        getDepartment1()
         $("#detailEmployee").hide()
     }
 
@@ -77,7 +78,23 @@
                 },
             })
     }
+    function getDepartment1(){
+        $.ajax({
 
+            url : "http://localhost:8080/employees/departments",
+            type: "GET",
+            success(data){
+                console.log(data)
+                let context = `
+                                        <select id="departments" class="form-control" >`
+                for (let i =0; i <data.length; i++){
+                    context+=`<option value="${data[i].id}">${data[i].name}</option>`
+                }
+                context += `</select>`
+                document.getElementById("departmentOption1").innerHTML = context
+            },
+        })
+    }
     function createEmployee(){
         let employee = {
             name : $("#name").val(),
@@ -240,6 +257,18 @@
     function sortEmployee(){
         $.ajax({
             url : "http://localhost:8080/employees/sort",
+            type : "GET",
+            success(data){
+                tableEmployee(data)
+                $("#saveForm").hide()
+                $("#showEmployee").show()
+            }
+        })
+    }
+    function searchDepartment(){
+        let id =  $("#departments").val()
+        $.ajax({
+            url : `http://localhost:8080/employees/search/${id}`,
             type : "GET",
             success(data){
                 tableEmployee(data)

@@ -69,6 +69,14 @@ public class EmployeeController {
             return new ResponseEntity<>(employee,HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
+    @GetMapping("/search/{id}")
+    public ResponseEntity<List<Employee>> searchByDepartment(@PathVariable("id")Long id){
+        List<Employee> employees = employeeService.searchByDepartment(id);
+        if (employees.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(employees,HttpStatus.OK);
+    }
+
 }

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IEmployeeService extends ICoreService<Employee> {
     List<Employee> sortByAge();
+    List<Employee> searchByDepartment(Long id);
 }
