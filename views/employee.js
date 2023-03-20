@@ -1,5 +1,5 @@
     function home() {
-      displayEmployee()
+        displayEmployee()
         getDepartment1()
         $("#detailEmployee").hide()
     }
@@ -69,7 +69,7 @@
                 success(data){
                     console.log(data)
                     let context = `<label for="departments" class="form-label">Department</label><br>
-                                        <select id="departments" class="form-control"  style="width: 25%">`
+                                        <select id="departments1" class="form-control"  style="width: 25%">`
                     for (let i =0; i <data.length; i++){
                         context+=`<option value="${data[i].id}">${data[i].name}</option>`
                     }
@@ -102,7 +102,7 @@
             salary : $("#salary").val(),
             codeEmployee : $("#code").val(),
             department : {
-                id : $("#departments").val(),
+                id : $("#departments1").val(),
             }
         }
         $.ajax({
@@ -115,6 +115,7 @@
             data: JSON.stringify(employee),
             success() {
                 alert("Successful!")
+                home()
                 displayEmployee()
                 $("#showEmployee").show()
             }
@@ -154,7 +155,7 @@
             salary : $("#salary").val(),
             codeEmployee : $("#code").val(),
             department : {
-                id : $("#departments").val(),
+                id : $("#departments1").val(),
             }
         }
         $.ajax({
