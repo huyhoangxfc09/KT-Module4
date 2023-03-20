@@ -18,7 +18,13 @@
   <div class="container">
     <nav class="navbar bg-dark" data-bs-theme="dark">
       <li>
+        <button class="btn btn-success" onclick="home()" id="home">Home</button>
+      </li>
+      <li>
         <button class="btn btn-success" onclick="createFormEmployee()" id="createForm">Add</button>
+      </li>
+      <li>
+        <button class="btn btn-success" onclick="sortEmployee()" id="sortByName">Sort</button>
       </li>
     </nav>
   </div>
@@ -54,6 +60,7 @@
     </form>
   </div>
 </div>
+<div id="detailEmployee"></div>
 </body>
 <script src="employee.js"></script>
 </html>

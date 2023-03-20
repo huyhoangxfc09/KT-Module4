@@ -31,4 +31,9 @@ public class EmployeeService implements IEmployeeService {
     public Employee findById(Long id) {
         return employeeRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Employee> sortByAge() {
+        return employeeRepository.sortByAge();
+    }
 }

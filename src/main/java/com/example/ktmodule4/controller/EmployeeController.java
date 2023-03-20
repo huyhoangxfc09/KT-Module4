@@ -30,7 +30,14 @@ public class EmployeeController {
         }
         return new ResponseEntity<>(employees,HttpStatus.OK);
     }
-
+    @GetMapping("/sort")
+    public ResponseEntity<List<Employee>> sortByAge(){
+        List<Employee> employees = employeeService.sortByAge();
+        if (employees.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(employees,HttpStatus.OK);
+    }
     @GetMapping ("/departments")
     public ResponseEntity<List<Department>> findAllDepartment(){
         List<Department> departments = departmentService.listAll();

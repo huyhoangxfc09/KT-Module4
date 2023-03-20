@@ -1,5 +1,6 @@
     function home() {
       displayEmployee()
+        $("#detailEmployee").hide()
     }
 
     window.onload = home
@@ -35,6 +36,7 @@
         for (let i = 0; i < data.length; i++){
             context+= `<tr>
                            <td>${data[i].codeEmployee}</td>
+<!--                           <td><button onclick="detailEmployee(${data[i].id})">${data[i].name}</button></td>-->
                            <td><a class="button" onclick="detailEmployee(${data[i].id})">${data[i].name}</a></td>                       
                            <td>${data[i].age}</td>
                            <td>${data[i].salary}</td>
@@ -105,6 +107,7 @@
     function backToHome(){
         displayEmployee()
         $("#showEmployee").show()
+        $("#detailEmployee").hide()
     }
 
     function updateFormEmployee(id){
@@ -171,12 +174,77 @@
             })
         }
     }
+    // function detailEmployee(id){
+    //     $.ajax({
+    //         url: `http://localhost:8080/employees/${id}`,
+    //         type: "GET",
+    //         success(data){
+    //             console.log(data)
+    //             let context = `<form>
+    //                             <table>
+    //                             <tr>
+    //                             <th>Detail Employee</th>
+    //                             </tr>
+    //                             <tr>
+    //                             <td>Employee Code</td>
+    //                             <td>${data.codeEmployee}</td>
+    //                             </tr>
+    //                             <tr>
+    //                             <td>Name</td>
+    //                             <td>${data.name}</td>
+    //                             </tr>
+    //                             <tr>
+    //                             <td>Age</td>
+    //                             <td>${data.age}</td>
+    //                             </tr>
+    //                             <tr>
+    //                             <td>Salary</td>
+    //                             <td>${data.salary}</td>
+    //                             </tr>
+    //                             <td>Salary</td>
+    //                             <td>${data.department.name}</td>
+    //                             </tr>
+    //                             </table>
+    //                             </form>`
+    //             document.getElementById("detailEmployee").innerHTML = context
+    //             console.log(context)
+    //             $("#detailEmployee").show()
+    //         }
+    //     })
+    // }
     function detailEmployee(id){
         $.ajax({
-            url: `http://localhost:8080/employees/${id}`,
+            url: "http://localhost:8080/employees/" + id,
             type: "GET",
-            success(data){
+            success(data) {
+                showDetail(data)
+                $("#showEmployee").hide()
+                $("#detailEmployee").show()
 
+            }
+        })
+    }
+    function showDetail(data){
+        let context = `
+                    <h1>Employee Detail</h1> 
+                  <p>EmployeeCode: ${data.codeEmployee} </p><br>
+                  <p>Name: ${data.name} </p><br>
+                  <p>Salary: ${data.salary} </p><br>
+                  <p>Age: ${data.age} </p><br>
+                  <p>Department:${data.department.name} </p><br>
+                  <button class="btn btn-secondary" onclick="backToHome()">Back</button>
+                 
+                 `
+        document.getElementById("detailEmployee").innerHTML = context
+    }
+    function sortEmployee(){
+        $.ajax({
+            url : "http://localhost:8080/employees/sort",
+            type : "GET",
+            success(data){
+                tableEmployee(data)
+                $("#saveForm").hide()
+                $("#showEmployee").show()
             }
         })
     }
