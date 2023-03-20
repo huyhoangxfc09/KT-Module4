@@ -18,7 +18,7 @@
   <div class="container">
     <nav class="navbar bg-dark" data-bs-theme="dark">
       <li>
-        <button class="btn btn-info" onclick="displayProductList(0)" id="menuProduct">Menu Product</button>
+        <button class="btn btn-success" onclick="createFormEmployee()" id="createForm">Add</button>
       </li>
     </nav>
   </div>
@@ -26,33 +26,33 @@
     <div id="showEmployee"></div>
   </div>
 
-
-<!--  <div class="container"  >-->
-<!--    <form id="productForm">-->
-<!--      <h2  id="titleProduct"></h2>-->
-<!--      <div class="mb-3">-->
-<!--        <label for="nameProduct" class="form-label">Name</label>-->
-<!--        <input type="text" class="form-control" id="nameProduct" style="width: 25%">-->
-<!--      </div>-->
-<!--      <div class="mb-3">-->
-<!--        <label for="price" class="form-label">Price</label>-->
-<!--        <input type="number" class="form-control" id="price" style="width: 25%">-->
-<!--      </div>-->
-<!--      <div class="mb-3">-->
-<!--        <label for="quantity" class="form-label">Quantity</label>-->
-<!--        <input type="number" class="form-control" id="quantity" style="width: 25%">-->
-<!--      </div>-->
-<!--      <div class="mb-3" id="categoryOption"></div>-->
-<!--      <div class="mb-3">-->
-<!--        <label for="file" class="form-label">Image</label>-->
-<!--        <input type="file" class="form-control" id="file" style="width: 25%">-->
-<!--      </div>-->
-<!--      <div class="mb-3">-->
-<!--        <button class="btn btn-primary" id="actionProduct">Save</button>&nbsp;-->
-<!--        <a class="btn btn-secondary" onclick="backToProduct()">Back</a>-->
-<!--      </div>-->
-<!--    </form>-->
-<!--  </div>-->
+<!--  form save-->
+  <div class="container"  >
+    <form id="saveForm">
+      <h2  id="title"></h2>
+      <div class="mb-3">
+        <label for="code" class="form-label">Employee Code</label>
+        <input type="text" class="form-control" id="code" style="width: 25%">
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" style="width: 25%">
+      </div>
+      <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" id="age" style="width: 25%">
+      </div>
+      <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input type="number" class="form-control" id="salary" style="width: 25%">
+      </div>
+      <div class="mb-3" id="departmentOption"></div>
+      <div class="mb-3">
+        <button class="btn btn-primary" id="action">Save</button>&nbsp;
+        <a class="btn btn-secondary" onclick="backToHome()">Back</a>
+      </div>
+    </form>
+  </div>
 </div>
 </body>
 <script src="employee.js"></script>
